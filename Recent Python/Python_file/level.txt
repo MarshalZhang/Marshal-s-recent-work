@@ -1,0 +1,58 @@
+
+This chapter is written especially for people who are new to video games and how they are made. If you are not a n00b1, then feel free to skip it. However you are going to be missing out on a lot of great stuff. Don’t say I didn’t warn you.
+Within the academic gaming community, there are many different definitions for what qualifies as a game. Some scholars insist that “a game needs to be a closed formal system that subjectively represents a subset of reality2.” Others say that games need to have “players in conflict with each other3.” I think those definitions are trying too hard to sound smart.
+Games, while complex, are often simpler than that. Bernard Suits4 wrote that “playing a game is a voluntary effort to overcome unnecessary obstacles.” This is a pretty amusing definition, but still a bit too scholarly for my taste. Let’s keep things simple. Let’s consider hand ball. You only need one player for hand ball—where’s the other players to be in conflict with? Bouncing a ball against a wall without missing it is hardly a metaphor for reality; unless you lead a very boring life. Let’s face it, sometimes a ball bouncing against a wall is just a ball bouncing against a wall.
+1 A n00b is short for “newbie”, or someone who is new to a game. While the term predates the Internet, it became popular with MO communities. Not a particularly flattering term, as it implies inexperience and/or ignorance: only a real n00b would read a footnote defining what a n00b is!
+2 “What is a Game?”, Chris Crawford in The Art of Computer Game Design, 1982. 3 “What is a Game?”, Kevin Langdon in The New Thesaurus, 1979.
+4 The Grasshopper: Games, Life and Utopia, Bernard Suits, 1978.
+2
+LEVEL 1 Welcome, N00bs!
+  Playing hand ball may therefore seem like a time-waster, but a time-waster becomes a game when you add rules and an objective. A rule may be to throw the ball with your right hand and catch it with your left, or to not drop the ball. A victory condition could be that you have to catch the ball ten times in a row. A failure state would be if you violated any of the rules or victory conditions. Once those criteria have been met, you have created a game. Ironically, while simple, hand ball was enough of a game to inspire the creators of one of the earliest video games: Tennis for Two.
+ 
+Welcome, N00bs! 3 So, let’s ask this basic question:
+Q: What is a game?
+A: A game is an activity that:
+• requires at least one player
+• has rules
+• has a victory condition.
+That’s pretty much it.
+Now that you know what a game is, let’s ask:
+Q: What is a video game?
+A: A video game is a game that is played on a video screen.
+Sure, you can start complicating the definition and add requirements about devices, peripherals, control schemes, player metrics, boss fights, and zombies (and don’t worry; we’ll tackle these things soon enough). But by my reckoning, that is pretty much as simple as it gets.
+Oh, there’s one other thing to consider at this early stage. The game’s objective. You should be able to sum a game’s objectives up quickly and clearly. If you can’t, you’ve got a problem.
+Danny Bilson, THQ’s EVP of Core Games, has a great rule of thumb about a game’s objective. He says that you should be able to sum up the game’s objectives as easily as those old Milton Bradley board games did on the front of their box. Check out these examples taken from real game boxes:
+Battleship: sink all of your opponent’s ships.
+Operation: successful operations earn “Money.” Failures set off alarms.
+Mouse Trap: player turns the crank which rotates gears causing lever
+to move and push the stop sign against shoe. Shoe tips bucket holding metal ball. Ball rolls down rickety stairs and into rain pipe which leads
+it to hit helping hand rod. This causes bowling ball to fall from top of helping hand rod through thing-a-ma-jig and bathtub to land on diving board. Weight of bowling ball catapults diver through the air and right into wash tub causing cage to fall from top of post and trap unsuspecting mouse.
+Ok, so maybe not with that last one. The lesson is, you need to keep your game objectives simple. Speaking of simple games, let’s take a moment to travel back to the dawn of video games. They had to start somewhere, right?
+ 
+4 LEVEL 1 Welcome, N00bs! A Brief History of Video Games
+The 1950s. The dawn of television, 3-D movies, and rock ‘n’ roll. Video games were invented in the 1950s too, only they were played by a very few people on very large computers. The first video game programmers were students in the computer labs of large universities like MIT and employees of military facilities at Brookhaven National Laboratories. Early games like OXO (1952), Spacewar! (1962), and Colossal Cave (1976) had very simple or even no graphics at all. They were displayed on very small black and white oscilloscope screens.
+After playing Spacewar! at the University of Utah’s computer lab, future Atari founders Ted Dabney and Nolan Bushnell were inspired to create Computer Space, the first arcade video game, in 1971. While (despite the name) the first arcade games could be found in bars, arcades dedicated to video games began appearing by the late 1970s.
+   
+A Brief History of Video Games 5
+Early arcade games like Asteroids, Battlezone, and Star Castle were rendered in vector graphics (images constructed from lines). After color raster graphics (images constructed from a grid of dots called pixels) were introduced, cartoon-inspired video game characters appeared. Characters like Pac-Man (Namco, 1980) and Donkey Kong (Nintendo, 1982) became pop culture icons virtually overnight.
+During the early 1980s, three styles of game machines dominated arcades: uprights (cabinets which the player stood in front of while they played), cocktail tables (arcade games set into the top of a small table, allowing the player to sit down while playing), and cockpits (elaborate game cabinets that allowed the player to lean or sit down to further enhance the gaming experience).
+  In the mid-1980s, arcades began springing up everywhere and video games took the world by storm. Game genres and themes became more varied, while gaming controls and cabinets became more elaborate with realistic controllers and beautiful graphics decorating uniquely designed cabinets. You could sit back-to-back in a two-player spaceship cockpit while playing Tail Gunner (Vectorbeam, 1979), battle Klingons from a replica of Captain Kirk’s command chair in Star Trek (Sega, 1982) or drive in an actual Ferrari Testarossa that moved and shook in Out Run (Sega, 1986). By the late 1990s, many arcade games started to resemble mini theme-park rides complete with rideable race horses, gyroscopically-moving virtual simulators and fighting booths that allowed players to battle virtual foes using actual punches and kicks. The most elaborate of these arcades was Virtual World’s BattleTech Centers; steampunk-themed arcades with linked “battle pods5”
+5 In the mid-1990s, I had the pleasure of going to a BattleTech Center on several occasions. The battle pods were a video gamer’s dream come true. The player sat in a photo booth-sized cockpit. Dual control joysticks and foot pedals operated the mech’s movement. Triggers and thumb switches fired the arsenal of weapons. Surrounding the pod’s video monitor were banks of dipswitches— each one actually having a function within the game from activating tracking devices to venting overheating weapons. It took at least one gaming session (about a half hour) just to learn what all the switches did! It was as realistic a gaming experience as I’ve ever had.
+
+6
+LEVEL 1 Welcome, N00bs!
+ that allowed 8 players to fight each other while stomping around in giant virtual “mechs.”
+These elaborate arcade games required lots of floor space and were
+very expensive to maintain. In the late 1990s, home systems began to rival and eventually surpassed the graphics seen in most arcade games. Arcades went out of business by the dozens. The video games became replaced with more lucrative redemption machines6 and games of skill
+like skeeball. With the liquidation of arcades, many cabinets ended up in the hands of private collectors. The golden age of video game arcades was over.
+Most recently, arcades have become social and virtual experiences. LAN gaming centers combine retail and social space to allow players to play computer and console games on a per-hour basis. Many have upgraded to feature large-scale gaming experiences held in movie theater-sized venues. Internet cafes are similar to LAN centers but with an emphasis on cultivating a café-style environment.
+Social gaming has also expanded in another direction. Companies such as Disney and the Sally Corporation have started merging traditional amusement dark rides7 with gameplay to create new arcade-style experiences. For example, Toy Story Midway Mania at Disney’s California Adventure (2008) whisks a four-player cart past a succession of giant
+video screens where players compete in a variety of carnival-style shooting games. Players are sprayed with air and water to simulate different visual effects in the game. The circle of modern arcade gaming and home gaming has come full circle with the release of a Wii version of the Toy Story Midway Mania attraction.
+Who knows? Perhaps these new attractions will become the backbone of a new hybrid arcade/amusement park filled with virtual games and interactive dark rides.
+6 Redemption machines are those claw catcher “games” you see in American toy stores and supermarkets. Personally, I would rather play the lottery than try my luck with one of these vending machines, which are rigged to (almost) guarantee you to lose. However, if you are ever in Japan, I recommend playing them as they are winnable and are usually stocked with some very cool toys and prizes.
+7 A “dark ride” is an amusement park attraction that has guests ride past scenes of (usually) audio-animatronic characters. Famous examples of dark rides include Disneyland’s Pirates of the Caribbean and Haunted Mansion.
+
+A Brief History of Video Games 7
+  A console is a gaming platform that can be used in the home. A microprocessor runs the electronic device, which sends a video display signal to the user’s TV set or monitor8. Unlike the dedicated controllers of an arcade machine, a home console controller has enough buttons, triggers, and analog controls to allow for a variety of games to be played. And unlike the dedicated motherboards in early arcade games, which could only hold one game, console games use cartridge, CD, and DVD media to allow players to quickly change games. From the late 1970s onwards, there have been many home consoles. Some of the more popular and/or well known previous generation ones include the Atari 2600 and Jaguar, the Mattel Intellivision, the Colecovision, the Nintendo Entertainment System and Super Nintendo, the Sega Genesis and Dreamcast, and the 3DO interactive player. Current consoles such as the Playstation 3, Xbox 360, and Nintendo Wii continue to bring gaming into the homes of millions of gamers worldwide.
+ Like arcade games, handheld games have a visual display, a processor, and controller, but are small enough to fit in the hands of the player. The first handheld titles were dedicated to only one game per unit. Auto Race (Mattel Electronics, 1976) used a digital display while the Game & Watch series (Nintendo, 1980) featured a more appealing liquid crystal display.
+8 One console exception is the wonderful Vectrex portable game system (Smith Engineering, 1982). The Vectrex’s processor, screen, controller and even one game were all in 
