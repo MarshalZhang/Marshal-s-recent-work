@@ -14,71 +14,75 @@ def player_go(board):
         j=int(input("Please choose the column number:"))-1
     board[i][j]="O"
 
-def Extent_board(board):
-    extent_board=[['E' for i in range(23)]for j in range(23)]
-    for i in range(15):
-        for j in range(15):
-            extent_board[i+4][j+4]=board[i][j]
-    return extent_board
 
 def horizontal(board,i,j,player,n):
-    extent_board=Extent_board(board)
-    extent_board[i+4][j+4]=player
+    board[i][j]=player
     f=1
     for k in range(5):
         for x in range(j-k, j-k+5):
-            if extent_board[i+4][x+4]==player:
-                f*=1
-            else:
-                f*=0
+            try:
+                if board[i][x]==player:
+                    f*=1
+                else:
+                    f*=0
+            except IndexError:
+                f=0
         if f==1:
-            extent_board[i+4][j+4]="E"
+            board[i][j]="E"
             return True
-    extent_board[i+4][j+4]="E"
+    board[i][j]="E"
 
 def vertical(board,i,j,player,n):
-    extent_board=Extent_board(board)
-    extent_board[i+4][j+4]=player
+    board[i][j]=player
     f=1
     for k in range(n):
         for x in range(i-k,i-k+n):
-            if extent_board[x+4][j+4]==player:
-                f*=1
-            else:
-                f*=0
+            try:
+                if board[x][j]==player:
+                    f*=1
+                else:
+                    f*=0
+            except IndexError:
+                f=0
         if f==1:
-            extent_board[i+4][j+4]="E"
+            board[i][j]="E"
             return True
-    extent_board[i+4][j+4]="E"
+    board[i][j]="E"
 
 def Major_Diagonal(board,i,j,player,n):
-    extent_board=Extent_board(board)
-    extent_board[i+4][j+4]=player
+    board[i][j]=player
     f=1
     for k in range(n):
         for x in range(i-k,i-k+n):
-                if extent_board[x+4][j-k+n+4]==player:
+            try:
+                if board[x][j-k+n]==player:
                     f*=1
                 else:
                     f*=0
+            except IndexError:
+                f=0
+            
         if f==1:
-            extent_board[i+4][j+4]="E"
+            board[i][j]="E"
             return True
-    extent_board[i+4][j+4]="E"
+    board[i][j]="E"
 
 def Minor_Diagonal(board,i,j,player,n):
-    extent_board=Extent_board(board)
-    extent_board[i+4][j+4]=player
+    board[i][j]=player
     f=1
     for k in range(n):
         for x in range(i-k,i-k+n):
-                if extent_board[x+4][j+k-n+4]==player:
+            try:
+                if board[x][j+k-n]==player:
                     f*=1
                 else:
                     f*=0
-    extent_board[i+4][j+4]="E"
-    if f==1:
-        return True
+            except IndexError:
+                f=0
+        if f==1:
+            board[i][j]="E"
+            return True
+    board[i][j]="E"
 
 def helper(board,i,j,player,n):    
     my_weight_dict=[2,8,18,100,1000]#parameter should be changed later in this array
@@ -86,35 +90,35 @@ def helper(board,i,j,player,n):
     x=0
     if player=="X":
         if horizontal(board,i,j,player,n):
-            x+=my_weight_dict[n-1]
+            x+=my_weight_dict[n-2]
         if vertical(board,i,j,player,n):
-            x+=my_weight_dict[n-1]
+            x+=my_weight_dict[n-2]
         if Major_Diagonal(board,i,j,player,n):
-            x+=my_weight_dict[n-1]
+            x+=my_weight_dict[n-2]
         if Minor_Diagonal(board,i,j,player,n):
-            x+=my_weight_dict[n-1]
+            x+=my_weight_dict[n-2]
     else:
         if horizontal(board,i,j,player,n):
-            x+=opponent_weight_dict[n-1]
+            x+=opponent_weight_dict[n-2]
         if vertical(board,i,j,player,n):
-            x+=opponent_weight_dict[n-1]
+            x+=opponent_weight_dict[n-2]
         if Major_Diagonal(board,i,j,player,n):
-            x+=opponent_weight_dict[n-1]
+            x+=opponent_weight_dict[n-2]
         if Minor_Diagonal(board,i,j,player,n):
-            x+=opponent_weight_dict[n-1]
+            x+=opponent_weight_dict[n-2]
     return x
         
         
 def My_weight(board,i,j):
     x=0
-    for n in range(1,6):
+    for n in range(2,7):
         x+=helper(board,i,j,"X",n)
     return x
     
 
 def Opponent_weight(board,i,j):
     x=0
-    for n in range(1,6):
+    for n in range(2,7):
         x+=helper(board,i,j,"O",n)
     return x
 
@@ -135,6 +139,10 @@ def AI_go(board):
     maxi=0
     maxj=0
     weight_board= Weight_board(board)
+    for i in range(15):
+        for j in range(15):
+            print(weight_board[i][j], end=" ")
+        print()
     for i in range(15):
         for j in range(15):
             if weight_board[i][j]>weight_board[maxi][maxj]:
