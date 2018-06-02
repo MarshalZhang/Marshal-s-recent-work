@@ -57,8 +57,8 @@ class Piper():
     def set_lv(lv):
         self.__lv=lv
 
-    def Inc_xp(inc):
-        print("You have gained:"+inc+"XP")    #This def is in charge of gain in xp
+    def Inc_xp(self,inc):
+        print("You have gained:"+str(inc)+"XP")    #This def is in charge of gain in xp
         self.__xp+=inc
         if inc>=self.__xp_left:
             print("Congrat Lv. up")
@@ -77,3 +77,11 @@ class Piper():
 
     def print_detail(self):
         print("Name:"+self.__name+" XI:"+self.__xi+" Hp:"+str(self.__hp))
+
+    def fight_against(self,opponent_piper):   #Huge work later to change this
+        print("You are using:" +self.__name+"to fight with"+opponent_piper.get_name())
+        if self.__hp>opponent_piper.get_hp():
+            print(self.__name+" have beaten:"+ opponent_piper.get_name())
+            self.Inc_xp(opponent_piper.get_lv())
+        else:
+            print(self.__name+" have been beaten by:"+opponent_piper.get_name())

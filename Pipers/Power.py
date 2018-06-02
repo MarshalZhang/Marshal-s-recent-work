@@ -1,5 +1,5 @@
 class Power():
-    def __init__(self,name,damage,Lv):
+    def __init__(self,name,damage,Lv):       #The name, damage, Lv defines the power
         self.__name=name
         self.__damage=damage
         self.__lv=Lv
@@ -18,6 +18,3 @@ class Power():
         
     def print_detail(self):
         print("Power_name:"+self.__name+"Power damage:"+self.__damage)
-
-
-    
