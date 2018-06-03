@@ -19,6 +19,7 @@ X=Piper("XiaoHuoHou","Fire",1,110,[Masturbate],100,100,100,100,100)
 B=Piper("BuBu","Plant",1,100,[Suckowndick],90,90,111,109,99)
 Y=Piper("YiYou","Water",1,90,[Fireball],110,110,90,90,110)
 
+
 #All the places
 
 Mars=Place("Mars",X,B,0.05,B,[])
@@ -26,7 +27,7 @@ Earth=Place("Earth",B,X,0.01,X,[Mars])
 Vinus=Place("Vinus",B,X,0.1,B,[Earth,Mars])
 Mercury=Place("Mercury",B,X,0.2,B,[Mars,Vinus,Earth])
 Mars.add_Connected_Place(Mercury)
-Place_list=[Mars,Earth]       # This list stores all the placed in the game
+Earth.add_Connected_Place(Vinus)
 name=str(input("Please enter your name:"))
 Main=Character(name,[],0,[],Mercury)
 
