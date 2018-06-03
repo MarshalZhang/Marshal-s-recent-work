@@ -1,8 +1,8 @@
 class Power():
-    def __init__(self,name,damage,Lv):       #The name, damage, Lv defines the power
+    def __init__(self,name,damage,diploma):       #The name, damage, diploma defines the power
         self.__name=name
         self.__damage=damage
-        self.__lv=Lv
+        self.__diploma=diploma
 
     def set_name(name):
         self.__name=name

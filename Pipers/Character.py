@@ -1,31 +1,36 @@
 class Character():
-    def __init__(self,name,Pipers,Money,Tools,Position):
+    def __init__(self,name,students,Money,Tools,Position):
         self.__name=name
-        self.__Pipers=Pipers
+        self.__students=students
         self.__Money=Money
         self.__Tools=[]
-        self.__Pipers_str=[]
+        self.__students_str=[]
         self.__Position=Position
-        for p in Pipers:
-            self.__Pipers_str.append(p.get_name())
+        for p in students:
+            self.__students_str.append(p.get_name())
 
-    def get_Pipers(self):
-        return self.__Pipers
+    def get_students(self):
+        return self.__students
 
-    def add_Piper(self,Piper):
-        self.__Pipers.append(Piper)
-        self.__Pipers_str.append(Piper.get_name())
+    def add_student(self,student):
+        self.__students.append(student)
+        self.__students_str.append(student.get_name())
 
-    def get_Pipers_str(self):
-        self.__Pipers_str
+    def display_students(self):
+        print("Your study group:")
+        for s in self.__students:
+            s.print_detail()
+
+    def get_students_str(self):
+        self.__students_str
 
     def get_Position(self):
         return self.__Position
 
     def exchange_position(self,a,b):
-        Temp=self.__Pipers[a]
-        self.__Pipers[a]=self.__Pipers[b]
-        self.__Pipers[b]=Temp
+        Temp=self.__students[a]
+        self.__students[a]=self.__students[b]
+        self.__students[b]=Temp
 
     def get_money(self):
         return self.__Money

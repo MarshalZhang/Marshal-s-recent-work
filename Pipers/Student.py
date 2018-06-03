@@ -57,9 +57,10 @@ class Student():
     def set_diploma(diploma):
         self.__diploma=diploma
 
-    def Inc_xp(self,inc):
+    def Inc_xp(self,inc):      #Gain xp from fighting
         print("You have gained:"+str(inc)+"XP"+", Now it has "+str(self.__xp)+" XP overall")    #This def is in charge of gain in xp
         self.__xp+=inc
+        self.__diploma=cal_diploma(self.__xp)
         
     def get_hp(self):
         return self.__hp

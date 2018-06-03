@@ -1,9 +1,9 @@
-# This is my project called: Pipers
+# This is my project called: students
 # Created by Marshal Studio
 # This is a total coommand line interface game
 
 from Place import *
-from Piper import *
+from Student import *
 from Power import *
 from Character import *
 
@@ -14,43 +14,43 @@ Masturbate= Power("Masturbate",1000,1)
 Suckowndick= Power("Suck",10,1)
 Fireball=Power("Power",250,1)
 
-#All the pipers
-X=Piper("XiaoHuoHou","Fire",1,110,[Masturbate],100,100,100,100,100)
-B=Piper("BuBu","Plant",1,100,[Suckowndick],90,90,111,109,99)
-Y=Piper("YiYou","Water",1,90,[Fireball],110,110,90,90,110)
+#All the students
+M=Student("Marshal","Physics",1,110,[Masturbate],100,100,100,100,100)
+K=Student("Kevin","Engineering",10,100,[Suckowndick],90,90,111,109,99)
+R=Student("Rex","Math",10,90,[Fireball],110,110,90,90,110)
 
 
 #All the places
 
-Mars=Place("Mars",X,B,0.05,B,[])
-Earth=Place("Earth",B,X,0.01,X,[Mars])
-Vinus=Place("Vinus",B,X,0.1,B,[Earth,Mars])
-Mercury=Place("Mercury",B,X,0.2,B,[Mars,Vinus,Earth])
-Mars.add_Connected_Place(Mercury)
-Earth.add_Connected_Place(Vinus)
+Cambridge=Place("Cambridge",M,K,0.05,R,[])
+Madison=Place("Madison",R,K,0.01,M,[Cambridge])
+Waterloo=Place("Waterloo",M,R,0.1,K,[Madison,Cambridge])
+ICC=Place("ICC",K,M,0.2,R,[Cambridge,Waterloo,Madison])
+Cambridge.add_connected_place(ICC)
+Madison.add_connected_place(Waterloo)
 name=str(input("Please enter your name:"))
-Main=Character(name,[],0,[],Mercury)
+Main=Character(name,[],0,[],ICC)
 
 
 
 
 def initialisation():
     quit= False
-    print("Hi!"+name+", Welcome to Pipers, the game created by Marshal")
-    print("You can choose between three Pipers from the start")
-    X.print_detail()
-    B.print_detail()
-    Y.print_detail()
+    print("Hi!"+name+", Welcome to students, the game created by Marshal")
+    print("You can choose between three students from the start")
+    M.print_detail()
+    R.print_detail()
+    K.print_detail()
     while True:
         First=(str(input("Please enter your option:"))).lower()
-        if First=="xiaohuohou":
-            Main.add_Piper(X)
+        if First=="marshal":
+            Main.add_student(M)
             break
-        elif First=="bubu":
-            Main.add_Piper(B)
+        elif First=="rex":
+            Main.add_student(R)
             break
-        elif First=="yiyou":
-            Main.add_Piper(Y)
+        elif First=="kevin":
+            Main.add_student(K)
             break
         else:
             continue
@@ -59,23 +59,25 @@ def initialisation():
         Choose_Option(Main.get_Position())
         
 
-def str_to_piper(List,Str):      #Convert the name of the piper to the object
+def str_to_student(List,Str):      #Convert the name of the student to the object
     for i in range(len(List)):
         if List[i].get_name()==Str:
             return List[i]
         
         
 def Choose_Option(place):
+    place.update_rare()
     place.print_details()
     Option=(input("Choose between Fight or Leave:")).title()
     if Option=="Fight":
-        print(place.get_pipers_str())
+        Main.display_students()
+        print(place.get_students_str())
         valid=False
             
         while valid==False:
-            opponent_piper_str=str(input("Aginst which piper:"))
-            if opponent_piper_str in place.get_pipers_str():
-                (Main.get_Pipers())[0].fight_against(str_to_piper(place.get_pipers(),opponent_piper_str))
+            opponent_student_str=str(input("Aginst which student:"))
+            if opponent_student_str in place.get_students_str():
+                (Main.get_students())[0].fight_against(str_to_student(place.get_students(),opponent_student_str))
                 valid=True
         Choose_Option(place)
 

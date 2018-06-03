@@ -1,94 +1,105 @@
 import random
 
-class Place():         # Place is a subclass of Map
-    def __init__(self,name,Piper,Rare_piper,Rare_piper_p,boss,Connected_Place):
+class Place():  
+    def __init__(self,name,student,rare_student,rare_student_p,professor,connected_place):
         self.__name=name
-        self.__Piper=Piper
-        self.__Rare_piper=Rare_piper
-        self.__Rare_piper_p=Rare_piper_p
-        self.__pipers=[Piper,boss]
-        self.__pipers_str=[]  #The str format of all the pipers in the map
+        self.__student=student
+        self.__rare_student=rare_student
+        self.__rare_student_p=rare_student_p
+        self.__students=[]
+        self.__students_str=[]  #The str format of all the students in the map
         
-        self.__boss=boss      #The dic contains all the information
-        self.__dict={"Name":name,"Common piper":Piper,"Boss":boss,"Connected place":Connected_Place}
-        if random.random()<Rare_piper_p:
-            self.__dict["Rare piper"]=Rare_piper
-            self.__pipers.append(Rare_piper)
+        self.__professor=professor      #The dic contains all the information
+        self.__dict={}
             
-        self.__Connected_Place=Connected_Place   #Connected_Place is a list
-        for p in self.__pipers:
-            self.__pipers_str.append(p.get_name())
+        self.__connected_place=connected_place   #connected_place is a list
+        
         self.__places_str=[]    # The str format of all the places we can go
-        for p in Connected_Place:
+        for p in connected_place:
             self.__places_str.append(p.get_name())
         
         
     def get_name(self):   
         return self.__name
 
-    def get_Piper(self):
-        return self.__Piper
+    def get_student(self):
+        return self.__student
 
-    def get_Rare_piper(self):
-        return self.__Rare_piper
+    def get_rare_student(self):
+        return self.__rare_student
 
-    def get_Rare_piper_p(self):
-        return self.__Rare_piper_p
+    def get_rare_student_p(self):
+        return self.__rare_student_p
 
-    def get_boss(self):
-        return self.__boss
+    def get_professor(self):
+        return self.__professor
 
     def get_dict(self):
         return self.__dict
 
-    def get_Connected_Place(self):
-        return self.__Connected_Place          #this one also return a list
+    def get_connected_place(self):
+        return self.__connected_place          #this one also return a list
 
-    def get_pipers_str(self):
-        return self.__pipers_str
+    def get_students_str(self):
+        return self.__students_str
 
-    def get_pipers(self):
-        return self.__pipers
+    def get_students(self):
+        return self.__students
 
     def get_places_str(self):
         return self.__places_str
+
+    def update_rare(self):            #Update the scence
+        self.__students=[self.__student,self.__professor]
+        self.__dict={}
+        self.__dict["Name"]=self.__name
+        self.__dict["Common student"]=self.__student
+        self.__dict["Professor"]=self.__professor
+        self.__dict["Connected place"]=self.__connected_place
+        self.__students_str=[]
+
+        if random.random()<self.__rare_student_p:
+            self.__dict["Rare student"]=self.__rare_student
+            self.__students.append(self.__rare_student)
+        for p in self.__students:
+            self.__students_str.append(p.get_name())
 
     def set_name(self,name):
         self.__name=name
         dict["Name"]=name
 
-    def set_Piper(self,Piper):
-        self.__Piper=Piper
-        dict["Common piper"]=Piper
+    def set_student(self,student):
+        self.__student=student
+        dict["Common student"]=student
 
-    def set_Rare_piper(self,Rare_piper):
-        self.__Rare_piper=Rare_piper
+    def set_rare_student(self,rare_student):
+        self.__rare_student=rare_student
 
-    def set_Rare_piper_p(self,Rare_piper_p):
-        self.__Rare_piper_p=Rare_piper_p
+    def set_rare_student_p(self,rare_student_p):
+        self.__rare_student_p=rare_student_p
 
-    def set_boss(self,boss):
-        self.__boss=boss
-        dict["Boss"]=boss
+    def set_professor(self,professor):
+        self.__professor=professor
+        dict["Professor"]=professor
 
-    def add_Connected_Place(self,Place):
-        self.__Connected_Place.append(Place)
-        self.__places_str.append(Place.get_name())
+    def add_connected_place(self,place):
+        self.__connected_place.append(place)
+        self.__places_str.append(place.get_name())
 
-    def remove_Connected_Place(self,Place):
-        while Place in self.__Connected_Place:
-            self.__Connected_Place.remove(Place)
+    def remove_connected_place(self,place):
+        while place in self.__connected_place:
+            self.__connected_place.remove(place)
 
     def print_details(self):
         for key,value in self.__dict.items():
             if key=="Name":
-                print("Current planet:"+value)
-            elif key=="Common piper":
-                print("Common piper:"+value.get_name())
-            elif key=="Boss":
-                print("Boss:"+value.get_name())
-            elif key=="Rare piper":
-                print("Rare piper:'"+value.get_name()+"' occurs")
+                print("Current position:"+value)
+            elif key=="Common student":
+                print("Common student:"+value.get_name())
+            elif key=="Professor":
+                print("Professor:"+value.get_name())
+            elif key=="Rare student":
+                print("Rare student:'"+value.get_name()+"' occurs")
 
             elif key=="Connected_Place":
                 names=[]
