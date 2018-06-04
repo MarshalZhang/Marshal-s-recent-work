@@ -17,7 +17,7 @@ Fireball=Power("Power",250,1)
 #All the students
 M=Student("Marshal","Physics",1,110,[Masturbate],100,100,100,100,100)
 K=Student("Kevin","Engineering",10,100,[Suckowndick],90,90,111,109,99)
-R=Student("Rex","Math",10,90,[Fireball],110,110,90,90,110)
+R=Student("Rex","Math",90,90,[Fireball],110,110,90,90,110)
 
 
 #All the places
@@ -28,6 +28,8 @@ Waterloo=Place("Waterloo",M,R,0.1,K,[Madison,Cambridge])
 ICC=Place("ICC",K,M,0.2,R,[Cambridge,Waterloo,Madison])
 Cambridge.add_connected_place(ICC)
 Madison.add_connected_place(Waterloo)
+
+#Initialisation of the character
 name=str(input("Please enter your name:"))
 Main=Character(name,[],0,[],ICC)
 
