@@ -6,18 +6,25 @@ from Place import *
 from Student import *
 from Power import *
 from Character import *
+from Person import *
 
 #All the objects that I created at the start
 
 #All the powers
-Masturbate= Power("Masturbate",1000,1)
-Suckowndick= Power("Suck",10,1)
-Fireball=Power("Power",250,1)
+Masturbate= Power("Masturbate","Major",1000,1)
+Suckowndick= Power("Suck","Minor",10,1)
+Fireball=Power("Power","Emotional",250,1)
+
+#All the persons
+Marshal=Person("Marshal","Physics",600,[Masturbate],20,5,20,6,20,20)
+Kevin= Person("Kevin","Engineering",600,[Suckowndick],16,16,16,16,16,16)
+Rex=Person("Rex","Math",600,[Fireball],21,18,25,15,15,15)
+
 
 #All the students
-M=Student("Marshal","Physics",1,110,[Masturbate],100,100,100,100,100)
-K=Student("Kevin","Engineering",10,100,[Suckowndick],90,90,111,109,99)
-R=Student("Rex","Math",90,90,[Fireball],110,110,90,90,110)
+M=Student("Marshal",Marshal,1,[2,1,1,1,1,2])
+K=Student("Kevin",Kevin,10,[1,1,1,1,1,1])
+R=Student("Rex",Rex,90,[1,1,1,1,1,1])
 
 
 #All the places

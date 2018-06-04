@@ -55,105 +55,95 @@ def majors_attact(a, b):    # a and b are two majors(str)
         if b=="Physics" or b=="Math":
             return 0.8
 
-def normal_generate(average, sd):
+def normal_generate(average, sd):  #Change later, I forget the algorithm
     n=average+((random.random()-0.5)*sd)
     return n
 
-
-class Person():       #Person defines the talent of the person (prototype)
-    def __init__(self,name,major,initial,powers,hpg,EQg,IQg,QDg,IDg,speedg):#g stand for growth
-        self.__name=name
-        self.__major=major
-        self.__initial=intial       # The intial 
-        self.__powers=powers
-        self.__hpi=0.00
-        self.__EQi=0.00
-        self.__IQi=0.00
-        self.__QDi=0.00
-        self.__IDi=0.00
-        self.__speedi=0.00
-        self.__hpg=hpg
-        self.__EQg=EQg
-        self.__IQg=IQg
-        self.__QDg=QDg
-        self.__IDg=IDg
-        self.__speedg=speedg
-
-    def get_initial_6(self):   #define the initial 6 of the person
-        average=self.__intial/6
-        self.__hpi=normal_generate(average, 5)
-        self.__EQi=normal_generate(average, 5)
-        self.__IQi=normal_generate(average, 5)
-        self.__QDi=normal_generate(average, 5)
-        self.__IDi=normal_generate(average, 5)
-        
-    def get_talent(self):
-        q=hpg
-
+def get_talent(list_6):
+    q=0
+    for i in list_6:
+        q+=i
+    
+    if q>=1000:
+        return "Study God"
+    elif q>=910:
+        return "Stduy King"
+    elif q>=820:
+        return "Study Soso"
+    else:
+        return "Study Bad"
 
     
 class Student():
-    def __init__(self,name,person,xp,hp,powers,EQ,IQ,QD,ID,speed):
+    def __init__(self,name,person,xp,current6):
         self.__name=name
-        self.__person=person
-        self.__major=major     
+        self.__person=person    
         self.__diploma=cal_diploma(xp)
         self.__xp=xp
         self.__xp_left=cal_xp_left(xp)
-        self.__hp=hp
-        self.__powers=powers
-        self.__quaility=""      #Common,Rare,Epic, Lengendary
-        self.__powers_str=[]       #The string format of current power
-        for p in powers:
-            self.__powers_str.append(p.get_name())
-        self.__EQ=EQ
-        self.__IQ=IQ
-        self.__QD=QD
-        self.__ID=ID
-        self.__speed=speed
-        
+        self.__current6=current6
+        self.__hp=current6[0]
+        self.__EQ=current6[1]
+        self.__IQ=current6[2]
+        self.__QD=current6[3]
+        self.__ID=current6[4]
+        self.__speed=current6[5]
+        self.__current_powers=[]
 
+
+        self.__this6_growth=[]      #This student's growth
+        for growth in self.__person.get_growth():
+            self.__this6_growth.append(normal_generate(growth,2))
+
+        self.__talent=get_talent(self.__this6_growth)
+
+        
     def get_name(self):
         return self.__name
 
     def set_name(name):
         self.__name=name
 
-    def get_major(self):
-        return self.__major
-    
-    def set_major(major):
-        self.__major=major
-
     def get_diploma(self):
         return self.__diploma
-
-    def set_diploma(diploma):
-        self.__diploma=diploma
 
     def get_xp(self):
         return self.__xp
 
     def Inc_xp(self,inc):      #Gain xp from fighting
+        print("You have gained:"+str(inc)+"XP")
+        left=cal_xp_left(self.__xp)
+        while inc>=left:
+            self.diploma_up()
+            self.__xp+=cal_xp_left(self.__xp)
+            inc-=cal_xp_left(self.__xp)       #Fix this tomorrow
+            left=cal_xp_left(self.__xp)
         self.__xp+=inc
-        self.__diploma=cal_diploma(self.__xp)
-        print("You have gained:"+str(inc)+"XP"+", and is now in diploma "+self.__diploma)    #This def is in charge of gain in xp
+        print(self.__name+" is now in diploma "+self.__diploma)    #This def is in charge of gain in xp
         print("XP required to next grade:",str(cal_xp_left(self.__xp)))
-        
+
+    def diploma_up(self):
+        print("Congrats, "+self.__name+" has been up'graded', increased value:")
+        l=[]
+        for i in(self.__this6_growth):
+            l.append(int(i))
+        print(l)
+        for i in range(6):
+            self.__current6[i]+=self.__this6_growth[i]
+        self.__diploma=diploma_list[diploma_list.index(self.__diploma)+1]
+
     def get_hp(self):
         return self.__hp
 
     def set_hp(hp):
         self.__hp=hp
+        self.__current6[0]=hp
 
     def get_powers(self):
-        return self.__powers
-
-    def set_powers(powers):
-        self.__powers=powers
+        return self.__current_powers
 
     def print_detail(self):
-        print("Name:"+self.__name+" Diploma:"+str(self.__diploma)+" Major:"+self.__major+" Hp:"+str(self.__hp))
+        print("Name:"+self.__name+" Diploma:"+str(self.__diploma)+" Major:"+self.__person.get_major()+" Hp:"+str(self.__hp))
 
     def fight_against(self,opponent_student):   #Huge work later to change this
         print("You are using:" +self.__name+" to fight against "+opponent_student.get_name())
