@@ -16,7 +16,7 @@ Suckowndick= Power("Suck","Minor",10,1)
 Fireball=Power("Power","Emotional",250,1)
 
 #All the persons
-Marshal=Person("Marshal","Physics",600,[Masturbate],20,5,20,6,20,20)
+Marshal=Person("Marshal","Physics",600,[Masturbate],20,8,20,8,20,20)
 Kevin= Person("Kevin","Engineering",600,[Suckowndick],16,16,16,16,16,16)
 Rex=Person("Rex","Math",600,[Fireball],21,18,25,15,15,15)
 
@@ -88,12 +88,7 @@ def Choose_Option(place):
             if opponent_student_str in place.get_students_str():
                 (Main.get_students())[0].fight_against(str_to_student(place.get_students(),opponent_student_str))
                 valid=True
-        Choose_Option(place)
-
-    
-
-    
-                                                                       
+        Choose_Option(place)                                                                      
                         
     elif Option=="Leave": 
         print("Possible location to go into:")
@@ -106,7 +101,7 @@ def Choose_Option(place):
                 continue
         for i in range(len(place.get_places_str())):
                     if (place.get_places_str())[i]==Target_place:
-                        Main.set_Position(place.get_connected_Place()[i])
+                        Main.set_Position(place.get_connected_place()[i])
     
     
         

@@ -55,6 +55,10 @@ def majors_attact(a, b):    # a and b are two majors(str)
     elif a=="Engineer":
         if b=="Physics" or b=="Math":
             return 0.8
+    elif a=="Physics":
+        if b=="Chemistry":
+            return 3
+    return 1
 
 def normal_generate(average, sd): 
     r=np.random.normal(loc=0.0,scale=1.0,size=None)
@@ -100,6 +104,9 @@ class Student():
 
     def get_talent(self):
         return self.__talent
+
+    def get_person(self):
+        return self.__person
 
     def get_name(self):
         return self.__name
@@ -172,10 +179,10 @@ class Student():
     def fight_against(self,opponent_student):  
         print("You are using:" +self.__name+" to fight against "+opponent_student.get_name())
         my_speed=self.__speed
-        my_damage=(self.__EQ*self.__IQ/opponent_student.get_ED())/10
+        my_damage=(self.__EQ*self.__IQ*majors_attact(self.__person.get_major(),opponent_student.get_person().get_major())/opponent_student.get_ED())/10
         my_hp=self.__hp
         opp_speed=opponent_student.get_speed()
-        opp_damage=((opponent_student.get_IQ())*(opponent_student.get_EQ())/self.__ED)/10
+        opp_damage=((opponent_student.get_IQ())*(opponent_student.get_EQ())*majors_attact(opponent_student.get_person().get_major(),self.__person.get_major())/self.__ED)/10
         opp_hp=opponent_student.get_hp()
 
         fight_finished=False
@@ -183,13 +190,13 @@ class Student():
         while fight_finished==False and my_hp>0 and opp_hp>0:
             if my_speed>opp_speed:
                 d=normal_generate(my_damage,3)
-                print(self.__name+" attacts "+opponent_student.get_name()+", dealing a damage of:"+str(int(d)))
+                print(self.__name+" attacts "+opponent_student.get_name()+", damage:"+str(int(d)))
                 opp_hp-=d
                 opp_speed+=opponent_student.get_speed()
                 
             else:
                 d=normal_generate(opp_damage,3)
-                print(self.__name+" is attackted by "+opponent_student.get_name()+", undertaking a damge of:"+str(int(d)))
+                print(opponent_student.get_name()+" attackts "+self.__name+", damage:"+str(int(d)))
                 my_hp-=d
                 my_speed+=self.__speed
                     
