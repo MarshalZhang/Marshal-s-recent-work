@@ -1,4 +1,5 @@
 import random
+import numpy as np
 
 XP_Level_list=[]     #XP upgarde table
 for i in range(25):
@@ -55,23 +56,24 @@ def majors_attact(a, b):    # a and b are two majors(str)
         if b=="Physics" or b=="Math":
             return 0.8
 
-def normal_generate(average, sd):  #Change later, I forget the algorithm
-    n=average+((random.random()-0.5)*sd)
-    return n
+def normal_generate(average, sd): 
+    r=np.random.normal(loc=0.0,scale=1.0,size=None)
+    return r*sd+average
 
-def get_talent(list_6):
-    q=0
-    for i in list_6:
-        q+=i
+def cal_talent(list_6,person_6):
+    sum1=sum(list_6)
+    sum2=sum(person_6)
     
-    if q>=1000:
-        return "Study God"
-    elif q>=910:
-        return "Stduy King"
-    elif q>=820:
-        return "Study Soso"
+    if sum1>=14.1*1.6449+sum2:
+        return "Study God"  #Top 5%
+    elif sum1>=14.1*0.84162+sum2:
+        return "Stduy King"  #Top 20%
+    elif sum1>=sum2-14.1*0.25335:
+        return "Study Soso"   #Top 60%
+    elif sum1>=sum2-14.1*1.6449:
+        return "Study Bad"   #Top 95%
     else:
-        return "Study Bad"
+        return "Better given up"
 
     
 class Student():
@@ -85,19 +87,20 @@ class Student():
         self.__hp=current6[0]
         self.__EQ=current6[1]
         self.__IQ=current6[2]
-        self.__QD=current6[3]
+        self.__ED=current6[3]
         self.__ID=current6[4]
         self.__speed=current6[5]
         self.__current_powers=[]
-
-
+        
         self.__this6_growth=[]      #This student's growth
         for growth in self.__person.get_growth():
-            self.__this6_growth.append(normal_generate(growth,2))
+            self.__this6_growth.append(normal_generate(growth,10))
 
-        self.__talent=get_talent(self.__this6_growth)
+        self.__talent=cal_talent(self.__this6_growth,self.__person.get_growth())
 
-        
+    def get_talent(self):
+        return self.__talent
+
     def get_name(self):
         return self.__name
 
@@ -125,11 +128,14 @@ class Student():
     def diploma_up(self):
         print("Congrats, "+self.__name+" has been up'graded', increased value:")
         l=[]
+        int_list=[]
         for i in(self.__this6_growth):
-            l.append(int(i))
-        print(l)
+            l.append(normal_generate(i,3))
+        for i in l:
+            int_list.append(int(i))
+        print(int_list)
         for i in range(6):
-            self.__current6[i]+=self.__this6_growth[i]
+            self.__current6[i]+=l[i]
         self.__diploma=diploma_list[diploma_list.index(self.__diploma)+1]
 
     def get_hp(self):
@@ -142,13 +148,56 @@ class Student():
     def get_powers(self):
         return self.__current_powers
 
-    def print_detail(self):
-        print("Name:"+self.__name+" Diploma:"+str(self.__diploma)+" Major:"+self.__person.get_major()+" Hp:"+str(self.__hp))
+    def get_hp(self):
+        return self.__hp
 
-    def fight_against(self,opponent_student):   #Huge work later to change this
+    def get_IQ(self):
+        return self.__IQ
+
+    def get_EQ(self):
+        return self.__EQ
+
+    def get_ID(self):
+        return self.__ID
+
+    def get_ED(self):
+        return self.__ED
+
+    def get_speed(self):
+        return self.__speed
+
+    def print_detail(self):
+        print("Name:"+self.__name+" Diploma:"+str(self.__diploma)+" Major:"+self.__person.get_major()+" Talent:"+self.__talent)
+
+    def fight_against(self,opponent_student):  
         print("You are using:" +self.__name+" to fight against "+opponent_student.get_name())
-        if self.__hp>opponent_student.get_hp():
+        my_speed=self.__speed
+        my_damage=(self.__EQ*self.__IQ/opponent_student.get_ED())/10
+        my_hp=self.__hp
+        opp_speed=opponent_student.get_speed()
+        opp_damage=((opponent_student.get_IQ())*(opponent_student.get_EQ())/self.__ED)/10
+        opp_hp=opponent_student.get_hp()
+
+        fight_finished=False
+        
+        while fight_finished==False and my_hp>0 and opp_hp>0:
+            if my_speed>opp_speed:
+                d=normal_generate(my_damage,3)
+                print(self.__name+" attacts "+opponent_student.get_name()+", dealing a damage of:"+str(int(d)))
+                opp_hp-=d
+                opp_speed+=opponent_student.get_speed()
+                
+            else:
+                d=normal_generate(opp_damage,3)
+                print(self.__name+" is attackted by "+opponent_student.get_name()+", undertaking a damge of:"+str(int(d)))
+                my_hp-=d
+                my_speed+=self.__speed
+                    
+        if my_hp<=0:
+            print(self.__name+" have been beaten by:"+opponent_student.get_name())
+        elif opp_hp<=0:
             print(self.__name+" have beaten:"+ opponent_student.get_name())
             self.Inc_xp(opponent_student.get_xp()/10)
-        else:
-            print(self.__name+" have been beaten by:"+opponent_student.get_name())
+            
+
+

@@ -1,9 +1,9 @@
 import random
+import numpy as np
 
-def normal_generate(average, sd):  #Change later, I forget the algorithm
-    n=average+((random.random()-0.5)*sd)
-    return n
-
+def normal_generate(average, sd): 
+    r=np.random.normal(loc=0.0,scale=1.0,size=None)
+    return r*sd+average
 
 class Person():       #Person defines the talent of the person (prototype)
     def __init__(self,name,major,initial,powers,hpg,EQg,IQg,QDg,IDg,speedg):#g stand for growth

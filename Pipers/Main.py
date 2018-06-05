@@ -22,9 +22,9 @@ Rex=Person("Rex","Math",600,[Fireball],21,18,25,15,15,15)
 
 
 #All the students
-M=Student("Marshal",Marshal,1,[2,1,1,1,1,2])
-K=Student("Kevin",Kevin,10,[1,1,1,1,1,1])
-R=Student("Rex",Rex,90,[1,1,1,1,1,1])
+M=Student("Marshal",Marshal,1,[200,65,200,75,65,90])
+K=Student("Kevin",Kevin,10,[100,100,100,100,100,100])
+R=Student("Rex",Rex,90,[120,70,110,80,100,120])
 
 
 #All the places
@@ -37,7 +37,7 @@ Cambridge.add_connected_place(ICC)
 Madison.add_connected_place(Waterloo)
 
 #Initialisation of the character
-name=str(input("Please enter your name:"))
+name="Marshal"
 Main=Character(name,[],0,[],ICC)
 
 
@@ -106,7 +106,7 @@ def Choose_Option(place):
                 continue
         for i in range(len(place.get_places_str())):
                     if (place.get_places_str())[i]==Target_place:
-                        Main.set_Position(place.get_Connected_Place()[i])
+                        Main.set_Position(place.get_connected_Place()[i])
     
     
         
